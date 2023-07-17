@@ -5,27 +5,23 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Global Temperature</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	<svg width={622} height={622}>
+		{#each Array(50) as _, i}
+			<circle
+				cx={311}
+				cy={311}
+				r={10+i*6}
+				fill="none" 
+				stroke="#FF0000"
+				stroke-width={2}
+			/>
+		{/each}
+	</svg>
 </section>
 
 <style>
@@ -34,7 +30,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		flex: 0.9;
 	}
 
 	h1 {
