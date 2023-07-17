@@ -12,7 +12,7 @@
 	</main>
 
 	<footer>
-		<p>Data from <a href="https://kit.svelte.dev">kit.svelte.dev</a></p>
+		<p>Data from <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-07-11">Tidy Tuesday</a></p>
 	</footer>
 </div>
 
