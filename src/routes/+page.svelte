@@ -6,11 +6,11 @@
 	let size = 50; //circle size
 	let warmColor = scaleLinear()
         .domain([0, 1.5])
-        .range(["#ffe7e7", "#810101"]);
+        .range(["#e6e6e6", "#810101"]);
 
 	let coldColor = scaleLinear()
 		.domain([-1.5, 0])
-		.range(["#0805b1", "#dbecfe"]);
+		.range(["#0805b1", "#e6e6e6"]);
 
 	let month = (index) => {
 		let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -119,7 +119,7 @@
 	}
 
 	.square {
-		background-color: #e8e8e8;
+		background-color: #e6e6e6;
 		margin: 10px;
 		border-radius: 5px;
 	}
