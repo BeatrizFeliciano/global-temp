@@ -32,9 +32,11 @@
 <style>
 	.tooltip {
 		box-shadow: 1px 1px 1px #ddd;
-		background: black;
+		background: white;
 		border-radius: 4px;
 		padding: 4px;
 		position: absolute;
+        color: gray;
+        font-family: 'Montserrat', sans-serif;
 	}
 </style>

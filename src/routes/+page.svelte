@@ -1,8 +1,16 @@
 <script>
 	import data from '../lib/data/global-temp.json';
 	import Tooltip from './Tooltip.svelte';
+	import { scaleLinear } from 'd3';
 
 	let size = 50; //circle size
+	let warmColor = scaleLinear()
+        .domain([0, 1.5])
+        .range(["#ffe7e7", "#810101"]);
+
+	let coldColor = scaleLinear()
+		.domain([-1.5, 0])
+		.range(["#0805b1", "#dbecfe"]);
 
 	let month = (index) => {
 		let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -10,26 +18,42 @@
 	}
 
 	let figure = (value) => {
-		console.log(value)
 		if (value > 0) {
 			return "circle"
 		}
 
 		else if (value === 0) {
+			return "square"
+		}
+
+		else if (value < 0) {
 			return "triangle"
 		}
 
-		return "square"
+		return "nothing"
 	}
 
 	let calcSize = (fig) => {
 		if (fig === "triangle")
-			return
+			return ""
 		return "width: " + size + "px; height: " + size + "px;"
 	}
 
-	let calcStyle = (fig) => {
-		return calcSize(fig)
+	let calcColor = (fig, value) => {
+		if (fig === 'circle')
+		return "background-color: " + warmColor(value)
+		
+		else if (fig === "triangle"){
+			return "border-bottom: 50px solid " + coldColor(value)
+		}
+
+		return ""
+	}
+
+	let calcStyle = (fig, value) => {
+		if (fig === "triangle")
+			console.log(calcSize(fig) + calcColor(fig, value))
+		return calcSize(fig) + calcColor(fig, value)
 	}
 	
 </script>
@@ -45,14 +69,12 @@
 			<p>{d.year}</p>
 			{#each Array(12) as _, index}
 				<Tooltip 
-					title=" year: {d.year}// 
-					month: {month(index)}//
-					 value: {parseFloat(d[month(index)])}"
+					title="value: {parseFloat(d[month(index)])}"
 				>
 					<div 
 						class={figure(parseFloat(d[month(index)]))} 
 						key={index}
-						style={calcStyle(figure(parseFloat(d[month(index)])))}
+						style={calcStyle(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
 					/>
 				</Tooltip>
 			{/each}
@@ -71,7 +93,6 @@
 
 	p {
 		margin: 20px;
-		font-family: 'Montserrat', sans-serif;
 	}
 
 	.data {
@@ -83,7 +104,7 @@
 
 	.circle {
 		border-radius: 50%;
-		background-color: #0074d9;
+		/* background-color: #0074d9; */
 		margin: 10px;
 	}
 
@@ -93,12 +114,18 @@
 		height: 0;
 		border-left: 25px solid transparent;
 		border-right: 25px solid transparent;
-		border-bottom: 50px solid #0074d9; /* Adjust the color of the triangle */
+		/* border-bottom: 50px solid #ffe7e7; */
 		margin: 10px;
 	}
 
 	.square {
-		background-color: #0074d9;
+		background-color: #e8e8e8;
+		margin: 10px;
+		border-radius: 5px;
+	}
+
+	.nothing {
+		background-color: transparent;
 		margin: 10px;
 	}
 </style>

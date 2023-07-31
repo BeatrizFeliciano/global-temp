@@ -17,6 +17,7 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		font-family: 'Montserrat', sans-serif;
 	}
 
 	main {
@@ -40,6 +41,7 @@
 
 	footer a {
 		font-weight: bold;
+		color: rgb(255, 251, 182);
 	}
 
 
