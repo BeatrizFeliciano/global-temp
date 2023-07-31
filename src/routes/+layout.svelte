@@ -1,9 +1,5 @@
 <script>
-	import Header from './Header.svelte';
 	import './styles.css';
-	import data from '../lib/data/global-temp.json'
-
-	console.log(data)
 </script>
 
 <div class="app">

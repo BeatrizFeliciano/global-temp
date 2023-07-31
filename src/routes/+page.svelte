@@ -1,7 +1,37 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import data from '../lib/data/global-temp.json';
+	import Tooltip from './Tooltip.svelte';
+
+	let size = 50; //circle size
+
+	let month = (index) => {
+		let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+		return months[index];
+	}
+
+	let figure = (value) => {
+		console.log(value)
+		if (value > 0) {
+			return "circle"
+		}
+
+		else if (value === 0) {
+			return "triangle"
+		}
+
+		return "square"
+	}
+
+	let calcSize = (fig) => {
+		if (fig === "triangle")
+			return
+		return "width: " + size + "px; height: " + size + "px;"
+	}
+
+	let calcStyle = (fig) => {
+		return calcSize(fig)
+	}
+	
 </script>
 
 <svelte:head>
@@ -10,18 +40,24 @@
 </svelte:head>
 
 <section>
-	<svg width={622} height={622}>
-		{#each Array(50) as _, i}
-			<circle
-				cx={311}
-				cy={311}
-				r={10+i*6}
-				fill="none" 
-				stroke="#FF0000"
-				stroke-width={2}
-			/>
-		{/each}
-	</svg>
+	{#each data as d}
+		<div class="data">
+			<p>{d.year}</p>
+			{#each Array(12) as _, index}
+				<Tooltip 
+					title=" year: {d.year}// 
+					month: {month(index)}//
+					 value: {parseFloat(d[month(index)])}"
+				>
+					<div 
+						class={figure(parseFloat(d[month(index)]))} 
+						key={index}
+						style={calcStyle(figure(parseFloat(d[month(index)])))}
+					/>
+				</Tooltip>
+			{/each}
+		</div>
+	{/each}
 </section>
 
 <style>
@@ -30,26 +66,39 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.9;
+		flex: 1;
 	}
 
-	h1 {
-		width: 100%;
+	p {
+		margin: 20px;
+		font-family: 'Montserrat', sans-serif;
 	}
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
+	.data {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.circle {
+		border-radius: 50%;
+		background-color: #0074d9;
+		margin: 10px;
+	}
+
+
+	.triangle {
+		width: 0;
 		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+		border-left: 25px solid transparent;
+		border-right: 25px solid transparent;
+		border-bottom: 50px solid #0074d9; /* Adjust the color of the triangle */
+		margin: 10px;
 	}
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.square {
+		background-color: #0074d9;
+		margin: 10px;
 	}
 </style>
