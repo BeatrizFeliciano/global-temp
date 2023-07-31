@@ -41,7 +41,7 @@
 
 	footer a {
 		font-weight: bold;
-		color: rgb(255, 251, 182);
+		color: #D1C3BE;
 	}
 
 

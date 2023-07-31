@@ -119,7 +119,7 @@
 	}
 
 	.square {
-		background-color: #e6e6e6;
+		background-color: #e3e3e3;
 		margin: 10px;
 		border-radius: 5px;
 	}
