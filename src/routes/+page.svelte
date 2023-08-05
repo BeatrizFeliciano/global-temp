@@ -61,15 +61,24 @@
 		<div class="data">
 			<p class="year">{d.year}</p>
 			{#each Array(12) as _, index}
-				<Tooltip 
-					title="value: {parseFloat(d[month(index)])}"
-				>
+				{#if figure(parseFloat(d[month(index)])) !== "nothing"}
+					<Tooltip 
+						title="value: {parseFloat(d[month(index)])}"
+					>
+						<div 
+							class={figure(parseFloat(d[month(index)]))} 
+							key={index}
+							style={calcColor(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
+						/>
+					</Tooltip>
+				{:else}
 					<div 
 						class={figure(parseFloat(d[month(index)]))} 
 						key={index}
 						style={calcColor(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
 					/>
-				</Tooltip>
+				{/if}
+
 			{/each}
 		</div>
 	{/each}
