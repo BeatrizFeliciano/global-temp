@@ -59,7 +59,7 @@
 	<h2 class="text">This is a test for a bigger text length. Just writting things to fill the horizontal space.</h2>
 	{#each data as d}
 		<div class="data">
-			<p>{d.year}</p>
+			<p class="year">{d.year}</p>
 			{#each Array(12) as _, index}
 				<Tooltip 
 					title="value: {parseFloat(d[month(index)])}"
@@ -85,14 +85,19 @@
 	}
 
 	p {
-		margin: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-right: 1.5vw;
+		font-size: clamp(10px, 2vw, 16px);
 	}
 
 	.title {
 		color: rgb(241, 241, 241);
 		margin-bottom: 20px;
 		text-align: center;
-		font-size: xx-large;
+		font-size: clamp(30px, 50px);
 	}
 
 	.text {
@@ -100,6 +105,7 @@
 		margin-bottom: 60px;
 		text-align: center;
 		font-size: large;
+		font-size: clamp(15px, 2vw, 20px);
 	}
 
 	.data {
@@ -107,8 +113,8 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		margin-left: 10px;
-		margin-right: 20px;
+		margin-left: 50px;
+		margin-right: 50px;
 	}
 
 	.circle {
