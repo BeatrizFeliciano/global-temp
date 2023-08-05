@@ -132,8 +132,8 @@
 		height: 5vw;
 		max-width: 50px;
 		max-height: 50px;
-		min-width: 20px;
-		min-height: 20px;
+		min-width: 15px;
+		min-height: 15px;
 		margin: 1vw;
 	}
 
@@ -142,8 +142,8 @@
 		height: 5vw;
 		max-width: 50px;
 		max-height: 50px;
-		min-width: 20px;
-		min-height: 20px;
+		min-width: 15px;
+		min-height: 15px;
 		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 		margin: 1vw;
 		box-sizing: border-box;
@@ -157,8 +157,8 @@
 		height: 5vw;
 		max-width: 50px;
 		max-height: 50px;
-		min-width: 20px;
-		min-height: 20px;
+		min-width: 15px;
+		min-height: 15px;
 	}
 
 	.nothing {
@@ -168,7 +168,7 @@
 		height: 5vw;
 		max-width: 50px;
 		max-height: 50px;
-		min-width: 20px;
-		min-height: 20px;
+		min-width: 15px;
+		min-height: 15px;
 	}
 </style>
