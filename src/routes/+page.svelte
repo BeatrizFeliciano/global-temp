@@ -3,7 +3,9 @@
 	import Tooltip from './Tooltip.svelte';
 	import { scaleLinear } from 'd3';
 
-	let size = 50; //circle size
+	let innerWidth = 0
+    let innerHeight = 0
+
 	let warmColor = scaleLinear()
         .domain([0, 1.5])
         .range(["#e6e6e6", "#810101"]);
@@ -33,37 +35,28 @@
 		return "nothing"
 	}
 
-	let calcSize = (fig) => {
-		if (fig === "triangle")
-			return ""
-		return "width: " + size + "px; height: " + size + "px;"
-	}
-
 	let calcColor = (fig, value) => {
 		if (fig === 'circle')
-		return "background-color: " + warmColor(value)
-		
-		else if (fig === "triangle"){
-			return "border-bottom: 50px solid " + coldColor(value)
-		}
+			return "background-color: " + warmColor(value)
+
+		else if (fig === 'triangle')
+			return "background-color: " + coldColor(value)
 
 		return ""
-	}
-
-	let calcStyle = (fig, value) => {
-		if (fig === "triangle")
-			console.log(calcSize(fig) + calcColor(fig, value))
-		return calcSize(fig) + calcColor(fig, value)
 	}
 	
 </script>
 
 <svelte:head>
 	<title>Global Temperature</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="App about the evolution of the global temperature." />
 </svelte:head>
 
+<svelte:window bind:innerWidth bind:innerHeight />
+
 <section>
+	<h1 class="title">Global Temperature</h1>
+	<h2 class="text">This is a test for a bigger text length. Just writting things to fill the horizontal space.</h2>
 	{#each data as d}
 		<div class="data">
 			<p>{d.year}</p>
@@ -74,7 +67,7 @@
 					<div 
 						class={figure(parseFloat(d[month(index)]))} 
 						key={index}
-						style={calcStyle(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
+						style={calcColor(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
 					/>
 				</Tooltip>
 			{/each}
@@ -95,37 +88,72 @@
 		margin: 20px;
 	}
 
+	.title {
+		color: rgb(241, 241, 241);
+		margin-bottom: 20px;
+		text-align: center;
+		font-size: xx-large;
+	}
+
+	.text {
+		margin-top: 10px;
+		margin-bottom: 60px;
+		text-align: center;
+		font-size: large;
+	}
+
 	.data {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
+		margin-left: 10px;
+		margin-right: 20px;
 	}
 
 	.circle {
 		border-radius: 50%;
-		/* background-color: #0074d9; */
-		margin: 10px;
+		width: 5vw;
+		height: 5vw;
+		max-width: 50px;
+		max-height: 50px;
+		min-width: 20px;
+		min-height: 20px;
+		margin: 1vw;
 	}
 
-
 	.triangle {
-		width: 0;
-		height: 0;
-		border-left: 25px solid transparent;
-		border-right: 25px solid transparent;
-		/* border-bottom: 50px solid #ffe7e7; */
-		margin: 10px;
+		width: 5vw;
+		height: 5vw;
+		max-width: 50px;
+		max-height: 50px;
+		min-width: 20px;
+		min-height: 20px;
+		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+		margin: 1vw;
+		box-sizing: border-box;
 	}
 
 	.square {
 		background-color: #e3e3e3;
-		margin: 10px;
+		margin: 1vw;
 		border-radius: 5px;
+		width: 5vw;
+		height: 5vw;
+		max-width: 50px;
+		max-height: 50px;
+		min-width: 20px;
+		min-height: 20px;
 	}
 
 	.nothing {
 		background-color: transparent;
-		margin: 10px;
+		margin: 1vw;
+		width: 5vw;
+		height: 5vw;
+		max-width: 50px;
+		max-height: 50px;
+		min-width: 20px;
+		min-height: 20px;
 	}
 </style>
