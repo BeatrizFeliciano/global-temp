@@ -120,7 +120,7 @@
 	}
 
 	.title {
-		color: rgb(193, 193, 193);
+		color: rgb( 193, 193, 193 );
 		margin-bottom: 30px;
 		text-align: center;
 		font-size: clamp(30px, 500px);
