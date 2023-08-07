@@ -7,11 +7,11 @@
     let innerHeight = 0
 
 	let warmColor = scaleLinear()
-        .domain([0, 1.5])
+        .domain([0, 1.3])
         .range(["#e6e6e6", "#810101"]);
 
 	let coldColor = scaleLinear()
-		.domain([-1.5, 0])
+		.domain([-1.3, 0])
 		.range(["#0805b1", "#e6e6e6"]);
 
 	let month = (index) => {
@@ -56,32 +56,45 @@
 
 <section>
 	<h1 class="title">Global Temperature</h1>
-	<h2 class="text">This is a test for a bigger text length. Just writting things to fill the horizontal space.</h2>
-	{#each data as d}
-		<div class="data">
-			<p class="year">{d.year}</p>
-			{#each Array(12) as _, index}
-				{#if figure(parseFloat(d[month(index)])) !== "nothing"}
-					<Tooltip 
-						title="value: {parseFloat(d[month(index)])}"
-					>
+	<h2 class="text">
+		<p>
+			The average global temperature on Earth has 
+			<u style={"text-decoration-thickness: 3px; text-decoration-color: " + warmColor(1.1)}>
+				increased around 1.1° Celsius
+			</u> 
+			since 1880.
+		</p>
+		<p>
+			A one-degree change is significant because it takes a great amount of variation to 
+			affect the temperature of the all the Earth's sea surface and air near-surface.
+		</p>
+	</h2>
+	<div class="viz">
+		{#each data as d}
+			<div class="data">
+				<p class="year">{d.year}</p>
+				{#each Array(12) as _, index}
+					{#if figure(parseFloat(d[month(index)])) !== "nothing"}
+						<Tooltip 
+							title="value: {parseFloat(d[month(index)])}"
+						>
+							<div 
+								class={figure(parseFloat(d[month(index)]))} 
+								key={index}
+								style={calcColor(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
+							/>
+						</Tooltip>
+					{:else}
 						<div 
 							class={figure(parseFloat(d[month(index)]))} 
 							key={index}
 							style={calcColor(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
 						/>
-					</Tooltip>
-				{:else}
-					<div 
-						class={figure(parseFloat(d[month(index)]))} 
-						key={index}
-						style={calcColor(figure(parseFloat(d[month(index)])), parseFloat(d[month(index)]))}
-					/>
-				{/if}
-
-			{/each}
-		</div>
-	{/each}
+					{/if}
+				{/each}
+			</div>
+		{/each}
+	</div>
 </section>
 
 <style>
@@ -93,28 +106,29 @@
 		flex: 1;
 	}
 
-	p {
+	.year {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		margin-right: 1.5vw;
 		font-size: clamp(10px, 2vw, 16px);
+		text-align: justify;
 	}
 
 	.title {
 		color: rgb(241, 241, 241);
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 		text-align: center;
 		font-size: clamp(30px, 50px);
 	}
 
 	.text {
-		margin-top: 10px;
-		margin-bottom: 60px;
+		margin-bottom: 30px;
 		text-align: center;
 		font-size: large;
-		font-size: clamp(15px, 2vw, 20px);
+		font-size: clamp(12px, 2vw, 17px);
+		text-align: justify;
 	}
 
 	.data {
@@ -122,8 +136,13 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		margin-left: 50px;
-		margin-right: 50px;
+	}
+
+	.viz {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.circle {
