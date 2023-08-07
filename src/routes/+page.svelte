@@ -12,7 +12,7 @@
 
 	let coldColor = scaleLinear()
 		.domain([-1.3, 0])
-		.range(["#0805b1", "#e6e6e6"]);
+		.range(["#0a07e2", "#e6e6e6"]);
 
 	let colorRange = (value) => {
 		if (value > 0)
@@ -161,7 +161,7 @@
 	.legend {
 		width: auto;
 		height: auto;
-		margin-bottom: 30px;
+		margin-bottom: 40px;
 	}
 
 	.legend-elements {
@@ -170,12 +170,13 @@
 		height: auto;
 		justify-content: space-between;
 		align-items: flex-start;
+		margin-bottom: 5px;
 	}
 
 	.color-scale {
 		width: 50vw;
 		height: 10px;
-		background: linear-gradient(90deg, #0805b1 0%, #e6e6e6 50%, #810101 100%);
+		background: linear-gradient(90deg, #0a07e2 0%, #e6e6e6 50%, #810101 100%);
 		border-radius: 10px;
 	}
 
@@ -194,7 +195,7 @@
 	.triangle {
 		width: 5vw;
 		height: 5vw;
-		background-color: #0805b1;
+		background-color: #0a07e2;
 		max-width: 50px;
 		max-height: 50px;
 		min-width: 15px;
