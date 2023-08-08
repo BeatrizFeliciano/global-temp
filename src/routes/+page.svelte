@@ -83,6 +83,20 @@
 				<p style="transform: translate(10px);">1.3ºC</p>
 			</div>
 		</div>	
+		<div class="months">
+			<p class="year" style="color: transparent; user-select: none;">00000</p>
+			{#each Array(12) as _, index}
+				<div 
+					class="nothing"
+					style="
+						display: flex; justify-content: center; align-items: center;"
+				>
+					<p class="year" style="margin-right: 0px;">
+						{month(index)}
+					</p>
+				</div>
+			{/each}
+		</div>
 		{#each data as d}
 			<div class="data">
 				<p class="year">{d.year}</p>
@@ -151,6 +165,16 @@
 	.year {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-right: 1.5vw;
+		font-size: clamp(10px, 2vw, 16px);
+		text-align: justify;
+	}
+
+	.months {
+		display: flex;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 		margin-right: 1.5vw;
