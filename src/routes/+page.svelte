@@ -83,11 +83,12 @@
 				<p style="transform: translate(10px);">1.3ºC</p>
 			</div>
 		</div>	
+
 		<div class="months">
 			<p class="year" style="color: transparent; user-select: none;">00000</p>
 			{#each Array(12) as _, index}
 				<div 
-					class="nothing"
+					class="month"
 					style="
 						display: flex; justify-content: center; align-items: center;"
 				>
@@ -97,6 +98,7 @@
 				</div>
 			{/each}
 		</div>
+
 		{#each data as d}
 			<div class="data">
 				<p class="year">{d.year}</p>
@@ -180,6 +182,15 @@
 		margin-right: 1.5vw;
 		font-size: clamp(10px, 2vw, 16px);
 		text-align: justify;
+	}
+
+	.month {
+		margin: 1vw;
+		margin-bottom: 0px;
+		width: 5vw;
+		height: auto;
+		max-width: 50px;
+		min-width: 15px;
 	}
 
 	.legend {
