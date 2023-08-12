@@ -65,7 +65,7 @@
 		</p>
 		<p>
 			A one-degree change is significant because it takes a great amount of variation to 
-			affect the temperature of the all the Earth's sea surface and air near-surface.
+			affect all the Earth's sea surface and air near-surface temperature.
 		</p>
 	</h2>
 
