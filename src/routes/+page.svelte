@@ -1,19 +1,21 @@
 <script>
 	import data from '../lib/data/global-temp.json';
-	import Tooltip from './Tooltip.svelte';
-	import { scaleLinear } from 'd3';
+	import Tooltip from '../components/Tooltip.svelte';
+	import Legend from '../components/Legend.svelte';
+	import { max, scaleLinear } from 'd3';
 
 	export let innerWidth;
     export let innerHeight;
 
-	let colorStep = 0.1857;
+	let minVal = -1.3;
+	let maxVal = 1.3;
 
 	let warmColor = scaleLinear()
-        .domain([0, 1.3])
+        .domain([0, maxVal])
         .range(["#e6e6e6", "#810101"]);
 
 	let coldColor = scaleLinear()
-		.domain([-1.3, 0])
+		.domain([minVal, 0])
 		.range(["#0a07e2", "#e6e6e6"]);
 
 	let colorRange = (value) => {
@@ -72,26 +74,11 @@
 	</h2>
 
 	<div class="viz">
-
-		<div class="legend">
-			<div class="legend-elements" style="width: 52.5vw;">
-				{#each Array(7) as _, i}
-					<div class="triangle-legend" style="background-color: {coldColor(-1.3 + colorStep*i)};"/>
-				{/each}
-
-				<div class="square-legend"/>
-
-				{#each Array(7) as _, i}
-					<div class="circle-legend" style="background-color: {warmColor(0 + colorStep*i)};"/>
-				{/each}
-			</div>
-			<div class="color-scale"/>
-			<div class="legend-elements" style="font-size: x-small;">
-				<p style="transform: translate(-10px);">-1.3ºC</p>
-				<p>0ºC</p>
-				<p style="transform: translate(10px);">1.3ºC</p>
-			</div>
-		</div>	
+		<Legend 
+			warmColor={warmColor} 
+			coldColor={coldColor}
+			minVal={minVal}
+			maxVal={maxVal}/>
 
 		<div class="months">
 			<p class="year" style="color: transparent; user-select: none;">00000</p>
@@ -205,7 +192,7 @@
 	.legend {
 		width: auto;
 		height: auto;
-		margin-bottom: 30px;
+		margin-bottom: 10px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
