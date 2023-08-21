@@ -1,6 +1,6 @@
 <script>
 	import data from '../lib/data/global-temp.json';
-	import {tooltip} from '../components/Tooltip/tooltip.js';
+	import { tooltip } from '../components/Tooltip/tooltip.js';
 	import Legend from '../components/Legend.svelte';
 	import { scaleLinear } from 'd3';
 

@@ -1,7 +1,6 @@
 import {default as defaultTooltip} from './Tooltip.svelte';
 
 export function tooltip(anchorNode, props = {}) {
-    console.log(anchorNode)
   let title, Tooltip = defaultTooltip;
   if (typeof props === 'string') title = props;
   else ({title, Component: Tooltip} = props);
