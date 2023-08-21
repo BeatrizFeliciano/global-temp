@@ -189,51 +189,6 @@
 		min-width: 15px;
 	}
 
-	.legend {
-		width: auto;
-		height: auto;
-		margin-bottom: 10px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.legend-elements {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		width: 50vw;
-		height: auto;
-		justify-content: space-between;
-		align-items: flex-start;
-		margin-bottom: 5px;
-	}
-
-	.circle-legend {
-		border-radius: 50%;
-		width: 2vw;
-		height: 2vw;
-		background-color: #810101;
-		margin: 0.5vw;
-	}
-
-	.triangle-legend {
-		width: 2vw;
-		height: 2vw;
-		background-color: #0a07e2;
-		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-		margin: 0.5vw;
-		box-sizing: border-box;
-	}
-
-	.square-legend {
-		background-color: #e3e3e3;
-		margin: 0.5vw;
-		border-radius: 5px;
-		width: 2vw;
-		height: 2vw;
-	}
-
 	.color-scale {
 		width: 50vw;
 		height: 10px;
