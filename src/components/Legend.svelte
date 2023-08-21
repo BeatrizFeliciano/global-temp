@@ -21,9 +21,9 @@
     </div>
     <div class="color-scale"/>
     <div class="legend-elements" style="font-size: x-small;">
-        <p style="transform: translate(-10px);">{minVal}ºC</p>
+        <p>{minVal}ºC</p>
         <p>0ºC</p>
-        <p style="transform: translate(10px);">{maxVal}ºC</p>
+        <p>{maxVal}ºC</p>
     </div>
 </div>	
 
