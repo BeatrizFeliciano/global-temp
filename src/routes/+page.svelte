@@ -1,8 +1,8 @@
 <script>
 	import data from '../lib/data/global-temp.json';
-	import Tooltip from '../components/Tooltip.svelte';
+	import {tooltip} from '../components/Tooltip/tooltip.js';
 	import Legend from '../components/Legend.svelte';
-	import { max, scaleLinear } from 'd3';
+	import { scaleLinear } from 'd3';
 
 	export let innerWidth;
     export let innerHeight;
@@ -100,15 +100,12 @@
 				<p class="year">{d.year}</p>
 				{#each Array(12) as _, index}
 					{#if figure(parseFloat(d[month(index)])) !== "nothing"}
-						<Tooltip 
-							title="{parseFloat(d[month(index)])}ºC"
-						>
-							<div 
-								class={figure(parseFloat(d[month(index)]))} 
-								key={index}
-								style="background-color: {colorRange(parseFloat(d[month(index)]))}"
-							/>
-						</Tooltip>
+						<div 
+							class={figure(parseFloat(d[month(index)]))} 
+							key={index}
+							style="background-color: {colorRange(parseFloat(d[month(index)]))}"
+							use:tooltip={`${parseFloat(d[month(index)])}ºC`}
+						/>
 					{:else}
 						<div 
 							class={figure(parseFloat(d[month(index)]))} 
