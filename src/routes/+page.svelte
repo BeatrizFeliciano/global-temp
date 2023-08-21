@@ -101,7 +101,7 @@
 				{#each Array(12) as _, index}
 					{#if figure(parseFloat(d[month(index)])) !== "nothing"}
 						<Tooltip 
-							title="value: {parseFloat(d[month(index)])}ºC"
+							title="{parseFloat(d[month(index)])}ºC"
 						>
 							<div 
 								class={figure(parseFloat(d[month(index)]))} 
