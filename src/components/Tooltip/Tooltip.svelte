@@ -1,4 +1,5 @@
 <svelte:options accessors={true} />
+
 <script>
   import {fade} from 'svelte/transition';
   import {createPopper} from '@popperjs/core';
@@ -6,8 +7,6 @@
   export let anchorNode;
   export let show = false;
   let tooltipNode;
-
-  console.log(anchorNode)
 
 $: if (tooltipNode) {
   createPopper(anchorNode, tooltipNode, {
