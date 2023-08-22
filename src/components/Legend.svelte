@@ -43,7 +43,8 @@
 		flex-direction: row;
 		align-items: center;
 		width: 60vw;
-		height: auto;
+		max-width: 850px;
+		min-width: 250px;
 		justify-content: space-between;
 		align-items: flex-start;
 		margin-bottom: 5px;
@@ -91,5 +92,7 @@
 		min-height: 3px;
 		background: linear-gradient(90deg, #0a07e2 0%, #e6e6e6 50%, #810101 100%);
 		border-radius: 10px;
+		max-width: 850px;
+		min-width: 250px;
 	}
 </style>

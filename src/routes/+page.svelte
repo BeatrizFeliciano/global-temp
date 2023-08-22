@@ -186,13 +186,6 @@
 		min-width: 15px;
 	}
 
-	.color-scale {
-		width: 50vw;
-		height: 10px;
-		background: linear-gradient(90deg, #0a07e2 0%, #e6e6e6 50%, #810101 100%);
-		border-radius: 10px;
-	}
-
 	.circle {
 		border-radius: 50%;
 		width: 5vw;
